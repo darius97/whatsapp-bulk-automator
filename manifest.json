@@ -1,0 +1,44 @@
+{
+  "manifest_version": 3,
+  "name": "WhatsApp Bulk Automator",
+  "version": "1.0.0",
+  "description": "Send bulk WhatsApp messages from Excel databases with randomized delays.",
+  "action": {
+    "default_popup": "index.html"
+  },
+  "background": {
+    "service_worker": "public/background.js"
+  },
+  "content_scripts": [
+    {
+      "matches": [
+        "https://web.whatsapp.com/*"
+      ],
+      "js": [
+        "public/content.js"
+      ],
+      "run_at": "document_idle"
+    }
+  ],
+  "permissions": [
+    "tabs",
+    "storage",
+    "unlimitedStorage"
+  ],
+  "host_permissions": [
+    "https://web.whatsapp.com/*"
+  ],
+  "web_accessible_resources": [
+    {
+      "resources": [
+        "index.html",
+        "public/*",
+        "src/*",
+        "assets/*"
+      ],
+      "matches": [
+        "https://web.whatsapp.com/*"
+      ]
+    }
+  ]
+}
